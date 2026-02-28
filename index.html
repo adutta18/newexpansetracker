@@ -1,103 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Expense Tracker</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Expanse Tracker</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
-  <div class="container">
-    <h1>💰 Expense Tracker</h1>
 
-    <!-- User Login -->
-    <div class="form-group">
-      <label for="username">Enter Username</label>
-      <input type="text" id="username" placeholder="Your name" required>
-      <button id="login-btn" class="btn">Login</button>
-    </div>
+<h2>💰 Expanse Tracker</h2>
 
-    <!-- Expense Form -->
-    <form id="expense-form" style="display:none;">
-      <div class="form-group">
-        <label for="type">Expense Type</label>
-        <select id="type">
-          <option value="Food">Food</option>
-          <option value="Travel">Travel</option>
-          <option value="Bills">Bills</option>
-          <option value="Shopping">Shopping</option>
-          <option value="Other">Other</option>
-        </select>
-        <input type="text" id="custom-type" placeholder="Custom category (optional)">
-      </div>
-      <div class="form-group">
-        <label for="date">Date</label>
-        <input type="date" id="date" required>
-      </div>
-      <div class="form-group">
-        <label for="amount">Amount (₹)</label>
-        <input type="number" id="amount" placeholder="Enter amount" required>
-      </div>
-      <button type="submit" class="btn">Add Expense</button>
-    </form>
+<!-- LOGIN -->
+<input id="username" placeholder="Enter Username">
+<button id="login-btn">Login</button>
 
-    <!-- Expense History -->
-    <h2>Expense History</h2>
-    <table id="expense-table">
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Date</th>
-          <th>Amount (₹)</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
+<!-- FORM -->
+<form id="expense-form" style="display:none;">
+<select id="type">
+<option>Food</option>
+<option>Travel</option>
+<option>Shopping</option>
+</select>
 
-    <!-- Totals -->
-    <h3>Total: ₹<span id="total">0</span></h3>
+<input type="text" id="custom-type" placeholder="Custom Type">
+<input type="date" id="date" required>
+<input type="number" id="amount" placeholder="Amount" required>
 
-    <!-- Budget -->
-    <div class="form-group">
-      <label for="budget">Monthly Budget (₹)</label>
-      <input type="number" id="budget" placeholder="Enter budget">
-    </div>
-    <h3>Remaining Budget: ₹<span id="remaining">0</span></h3>
+<button type="submit">Add Expense</button>
+</form>
 
-    <!-- Analytics -->
-    <h2>Analytics</h2>
-    <canvas id="expense-chart"></canvas>
-    <canvas id="expense-bar"></canvas>
+<!-- BUDGET -->
+<h3>Budget</h3>
+<input type="number" id="budget" placeholder="Set Budget">
+<p>Remaining: ₹<span id="remaining">0</span></p>
 
-    <!-- Monthly Summary -->
-    <h3>Monthly Summary</h3>
-    <table id="monthly-summary">
-      <thead>
-        <tr>
-          <th>Month</th>
-          <th>Total (₹)</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
+<!-- TABLE -->
+<table id="expense-table">
+<thead>
+<tr>
+<th>Type</th>
+<th>Date</th>
+<th>Amount</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
 
-    <!-- Export/Import -->
-    <div class="export-import">
-      <button id="export-btn" class="btn">Export Data</button>
-      <input type="file" id="import-file" accept=".json">
-      <button id="import-btn" class="btn">Import Data</button>
-    </div>
+<h3>Total: ₹<span id="total">0</span></h3>
 
-    <!-- Dark Mode -->
-    <button id="dark-mode-btn" class="btn">Toggle Dark Mode</button>
+<button id="export-btn">Export</button>
+<input type="file" id="import-file">
+<button id="import-btn">Import</button>
+
+<button id="dark-mode-btn">🌙 Dark Mode</button>
+
+<!-- CHARTS -->
+<canvas id="expense-chart"></canvas>
+<canvas id="expense-bar"></canvas>
+
+<table id="monthly-summary">
+<thead><tr><th>Month</th><th>Total</th></tr></thead>
+<tbody></tbody>
+</table>
+
+<!-- EDIT MODAL -->
+<div id="editModal" class="modal">
+  <div class="modal-content">
+    <h3>Edit Expense</h3>
+    <input id="edit-type">
+    <input type="date" id="edit-date">
+    <input type="number" id="edit-amount">
+    <button onclick="saveEdit()">Save</button>
+    <button onclick="closeModal()">Cancel</button>
   </div>
+</div>
 
-  <footer>
-    <p>&copy; 2026 Expense Tracker by Ajoy Dutta. All rights reserved.</p>
-  </footer>
+<!-- UNDO TOAST -->
+<div id="toast">
+Expense deleted
+<button onclick="undoDelete()">Undo</button>
+</div>
 
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
