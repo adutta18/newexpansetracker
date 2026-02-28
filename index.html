@@ -1,24 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Expanse Tracker</title>
 
 <link rel="stylesheet" href="style.css">
-
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
 
-<h2>💰 Expanse Tracker</h2>
+<h2>Expense Tracker</h2>
 
-<!-- LOGIN -->
 <input id="username" placeholder="Enter Username">
 <button id="login-btn">Login</button>
 
-<!-- FORM -->
 <form id="expense-form" style="display:none;">
 <select id="type">
 <option>Food</option>
@@ -26,19 +23,17 @@
 <option>Shopping</option>
 </select>
 
-<input type="text" id="custom-type" placeholder="Custom Type">
+<input id="custom-type" placeholder="Custom Type">
 <input type="date" id="date" required>
-<input type="number" id="amount" placeholder="Amount" required>
+<input type="number" id="amount" required placeholder="Amount">
 
 <button type="submit">Add Expense</button>
 </form>
 
-<!-- BUDGET -->
 <h3>Budget</h3>
-<input type="number" id="budget" placeholder="Set Budget">
+<input id="budget" type="number" placeholder="Set Budget">
 <p>Remaining: ₹<span id="remaining">0</span></p>
 
-<!-- TABLE -->
 <table id="expense-table">
 <thead>
 <tr>
@@ -57,34 +52,17 @@
 <input type="file" id="import-file">
 <button id="import-btn">Import</button>
 
-<button id="dark-mode-btn">🌙 Dark Mode</button>
+<button id="dark-mode-btn">Dark Mode</button>
 
-<!-- CHARTS -->
 <canvas id="expense-chart"></canvas>
 <canvas id="expense-bar"></canvas>
 
 <table id="monthly-summary">
-<thead><tr><th>Month</th><th>Total</th></tr></thead>
+<thead>
+<tr><th>Month</th><th>Total</th></tr>
+</thead>
 <tbody></tbody>
 </table>
-
-<!-- EDIT MODAL -->
-<div id="editModal" class="modal">
-  <div class="modal-content">
-    <h3>Edit Expense</h3>
-    <input id="edit-type">
-    <input type="date" id="edit-date">
-    <input type="number" id="edit-amount">
-    <button onclick="saveEdit()">Save</button>
-    <button onclick="closeModal()">Cancel</button>
-  </div>
-</div>
-
-<!-- UNDO TOAST -->
-<div id="toast">
-Expense deleted
-<button onclick="undoDelete()">Undo</button>
-</div>
 
 <script src="script.js"></script>
 </body>
