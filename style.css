@@ -1,0 +1,115 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f9;
+  margin: 0;
+  padding: 0;
+  transition: background 0.3s, color 0.3s;
+}
+
+.container {
+  max-width: 900px;
+  margin: 30px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1, h2, h3 {
+  text-align: center;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input, select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btn {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.btn:hover {
+  background: #0056b3;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+}
+
+.delete-btn, .edit-btn {
+  background: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.edit-btn {
+  background: #28a745;
+}
+
+.delete-btn:hover {
+  background: #a71d2a;
+}
+
+.edit-btn:hover {
+  background: #1e7e34;
+}
+
+.export-import {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Monthly summary table */
+#monthly-summary {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+#monthly-summary th, #monthly-summary td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+/* Dark Mode */
+body.dark {
+  background: #121212;
+  color: #f4f4f4;
+}
+body.dark .container {
+  background: #1e1e1e;
+}
