@@ -15,6 +15,7 @@ let expenses = [];
 let budget = 0;
 let pieChart = null;
 let barChart = null;
+let editingIndex = null; // ✅ Added declaration
 
 // Generate unique user key
 function getUserKey(username) {
@@ -41,7 +42,6 @@ loginBtn.addEventListener('click', () => {
 // Add Expense
 form.addEventListener('submit', function(e) {
   e.preventDefault();
-
   let type = document.getElementById('type').value;
   const customType = document.getElementById('custom-type').value.trim();
   if (customType) type = customType;
@@ -49,8 +49,6 @@ form.addEventListener('submit', function(e) {
   const date = document.getElementById('date').value;
   const amount = parseFloat(document.getElementById('amount').value);
 
-  // const expense = { type, date, amount };
-  // expenses.push(expense);
   const expense = { type, date, amount };
   if (editingIndex !== null) {
     expenses[editingIndex] = expense;
@@ -93,10 +91,8 @@ function editExpense(index) {
   document.getElementById('type').value = exp.type;
   document.getElementById('date').value = exp.date;
   document.getElementById('amount').value = exp.amount;
- // remove old entry, will be replaced when resubmitted
-  let.editingIndex = index;
-  saveExpenses();
-  renderExpenses();
+  // ✅ Fixed: was `let.editingIndex = index;`
+  editingIndex = index;
 }
 
 // Delete Expense
