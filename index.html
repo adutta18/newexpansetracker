@@ -1,69 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Expanse Tracker</title>
-
-<link rel="stylesheet" href="style.css">
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker</title>
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#007bff">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-
 <body>
+  <div class="container">
+    <h1>💰 Expense Tracker</h1>
 
-<h2>Expense Tracker</h2>
+    <!-- User Login -->
+    <div class="form-group">
+      <label for="username">Enter Username</label>
+      <input type="text" id="username" placeholder="Your name" required>
+      <button id="login-btn" class="btn">Login</button>
+    </div>
 
-<input id="username" placeholder="Enter Username">
-<button id="login-btn">Login</button>
+    <!-- Expense Form -->
+    <form id="expense-form" style="display:none;">
+      <div class="form-group">
+        <label for="type">Expense Type</label>
+        <select id="type">
+          <option value="Food">Food</option>
+          <option value="Travel">Travel</option>
+          <option value="Bills">Bills</option>
+          <option value="Shopping">Shopping</option>
+          <option value="Other">Other</option>
+        </select>
+        <input type="text" id="custom-type" placeholder="Custom category (optional)">
+      </div>
+      <div class="form-group">
+        <label for="date">Date</label>
+        <input type="date" id="date" required>
+      </div>
+      <div class="form-group">
+        <label for="amount">Amount (₹)</label>
+        <input type="number" id="amount" placeholder="Enter amount" required>
+      </div>
+      <button type="submit" class="btn">Add Expense</button>
+    </form>
 
-<form id="expense-form" style="display:none;">
-<select id="type">
-<option>Food</option>
-<option>Travel</option>
-<option>Shopping</option>
-</select>
+    <!-- Expense History -->
+    <h2>Expense History</h2>
+    <table id="expense-table">
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Date</th>
+          <th>Amount (₹)</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
 
-<input id="custom-type" placeholder="Custom Type">
-<input type="date" id="date" required>
-<input type="number" id="amount" required placeholder="Amount">
+    <!-- Totals -->
+    <h3>Total: ₹<span id="total">0</span></h3>
 
-<button type="submit">Add Expense</button>
-</form>
+    <!-- Budget -->
+    <div class="form-group">
+      <label for="budget">Monthly Budget (₹)</label>
+      <input type="number" id="budget" placeholder="Enter budget">
+    </div>
+    <h3>Remaining Budget: ₹<span id="remaining">0</span></h3>
 
-<h3>Budget</h3>
-<input id="budget" type="number" placeholder="Set Budget">
-<p>Remaining: ₹<span id="remaining">0</span></p>
+    <!-- Analytics -->
+    <h2>Analytics</h2>
+    <canvas id="expense-chart"></canvas>
+    <canvas id="expense-bar"></canvas>
 
-<table id="expense-table">
-<thead>
-<tr>
-<th>Type</th>
-<th>Date</th>
-<th>Amount</th>
-<th>Action</th>
-</tr>
-</thead>
-<tbody></tbody>
-</table>
+    <!-- Monthly Summary -->
+    <h3>Monthly Summary</h3>
+    <table id="monthly-summary">
+      <thead>
+        <tr>
+          <th>Month</th>
+          <th>Total (₹)</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
 
-<h3>Total: ₹<span id="total">0</span></h3>
+    <!-- Export/Import -->
+    <div class="export-import">
+      <button id="export-btn" class="btn">Export Data</button>
+      <input type="file" id="import-file" accept=".json">
+      <button id="import-btn" class="btn">Import Data</button>
+    </div>
 
-<button id="export-btn">Export</button>
-<input type="file" id="import-file">
-<button id="import-btn">Import</button>
+    <!-- Dark Mode -->
+    <button id="dark-mode-btn" class="btn">Toggle Dark Mode</button>
+  </div>
 
-<button id="dark-mode-btn">Dark Mode</button>
+  <footer>
+    <p>&copy; 2026 Expense Tracker by Ajoy Dutta. All rights reserved.</p>
+  </footer>
 
-<canvas id="expense-chart"></canvas>
-<canvas id="expense-bar"></canvas>
-
-<table id="monthly-summary">
-<thead>
-<tr><th>Month</th><th>Total</th></tr>
-</thead>
-<tbody></tbody>
-</table>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
+  <script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/service-worker.js")
+      .then(() => console.log("Service Worker registered"))
+      .catch(err => console.error("SW registration failed:", err));
+  }
+</script>
 </body>
 </html>
